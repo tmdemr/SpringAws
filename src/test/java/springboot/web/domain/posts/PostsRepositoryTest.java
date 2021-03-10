@@ -31,6 +31,7 @@ public class PostsRepositoryTest {
     @Test
     public void 게시글저장_불러오기(){
         //given
+        //테스트 기반 환경을 구축하는 단계
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
@@ -42,10 +43,14 @@ public class PostsRepositoryTest {
                 .build());
 
         // when
+        // 테스트 하고자 하는 행위 선언.
+        // 여기선 Posts가 DB에 insert 되는 것을 확인하기 위함.
         List<Posts> postsList = postsRepository.findAll();
         // 테이블 posts에 있는 모든 데이터를 조회해오는 메소드.
 
         //then
+        // 테스트 결과 검증
+        // 실제 DB에 insert 되었는지 확인하기 위해 조회후, 입력된 값 확인.
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
