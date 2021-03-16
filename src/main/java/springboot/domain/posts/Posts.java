@@ -3,6 +3,7 @@ package springboot.domain.posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import springboot.domain.BaseTimeEntity;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity // 테이블과 링크될 클래스임을 나타낸다.
-public class Posts { // 실제 DB의 테이블과 매칭될 클래스
+public class Posts extends BaseTimeEntity { // 실제 DB의 테이블과 매칭될 클래스
 
     @Id//해당 테이블의 PK필드를 나타낸다.
     @GeneratedValue(strategy = GenerationType.IDENTITY)// DB생성규칙
@@ -36,5 +37,6 @@ public class Posts { // 실제 DB의 테이블과 매칭될 클래스
         this.title = title;
         this.content = content;
     }
+
 
 }
